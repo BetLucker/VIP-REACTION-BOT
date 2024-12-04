@@ -8,5 +8,5 @@ async def start_message(client: Client, message: Message):
         f"Hello {message.from_user.first_name}! 👋\n\n"
         "I'm your Reaction Bot! I'll react to every message in groups, channels, and private chats with a 👍 emoji.\n\n"
         "Add me to your group or channel and watch me in action! 🚀\n\n"
-        "**You can make your bot by /clone😁**"
+        "**You can make your bot by /clone[😁](https://graph.org/file/66cb6ec40eea5c4670118.jpg)**"
     )
