@@ -16,7 +16,7 @@ cloneownerdb = mongodb.cloneownerdb
 clonebotdb = mongodb.clonebotdb
 
 
-@Client.on_message(filters.command(["clone", "host", "deploy"]))
+@Client.on_message(filters.command(["host", "deploy"]))
 async def clone_txt(client, message):
     if len(message.command) > 1:
         bot_token = message.text.split("/clone", 1)[1].strip()
@@ -44,10 +44,10 @@ async def clone_txt(client, message):
         except Exception as e:
             cloned_bot = await clonebotdb.find_one({"token": bot_token})
             if cloned_bot:
-                await mi.edit_text("**🤖 Your bot is already cloned ✅**")
+                await mi.edit_text("**🤖 𝗬𝗼𝘂𝗿 𝗕𝗼𝘁 𝗶𝘀 𝗛𝗼𝘀𝘁𝗲𝗱 𝗩𝗶𝘀𝗶𝘁 @TheBotsHub ✅**")
                 return
 
-        await mi.edit_text("**Cloning process started. Please wait for the bot to start.**")
+        await mi.edit_text("**𝙃𝙤𝙨𝙩𝙞𝙣𝙜 𝙔𝙤𝙪𝙧 𝘽𝙤𝙩 𝙤𝙣 𝙤𝙪𝙧 𝙎𝙚𝙧𝙫𝙚𝙧....**")
         try:
             details = {
                 "bot_id": bot.id,
@@ -74,15 +74,15 @@ async def clone_txt(client, message):
             await mi.edit_text(f"**Your bot successfully cloned👍**\n**You can check by /cloned**\n\n**But please start me (@{nexichat.username}) From owner id**")
         
         except BaseException as e:
-            logging.exception("Error while cloning bot.")
+            logging.exception("𝘿𝙚𝙩𝙚𝙘𝙩𝙚𝙙 𝙀𝙧𝙧𝙤𝙧 𝙒𝙝𝙞𝙡𝙚 𝙃𝙤𝙨𝙩𝙞𝙣𝙜.")
             await mi.edit_text(
                 f"⚠️ <b>Error:</b>\n\n<code>{e}</code>\n\n**Forward this message to @THE_VIP_BOY_OP for assistance**"
             )
     else:
-        await message.reply_text("**Provide Bot Token after /clone Command from @Botfather.**\n\n**Example:** `/clone bot token paste here`")
+        await message.reply_text("**𝙂𝙞𝙫𝙚 𝘽𝙤𝙩𝙏𝙤𝙠𝙚𝙣 𝘼𝙛𝙩𝙚𝙧 /𝙝𝙤𝙨𝙩 𝙛𝙧𝙤𝙢 @Botfather.**\n\n**Example:** `/clone bot token paste here`")
 
 
-@Client.on_message(filters.command("cloned"))
+@Client.on_message(filters.command("hosted"))
 async def list_cloned_bots(client, message):
     try:
         cloned_bots = clonebotdb.find()
@@ -102,12 +102,12 @@ async def list_cloned_bots(client, message):
         await message.reply_text("**An error occurred while listing cloned bots.**")
 
 @Client.on_message(
-    filters.command(["deletecloned", "delcloned", "delclone", "deleteclone", "removeclone", "cancelclone"])
+    filters.command(["deletehosted", "delhosted", "delhost", "deletehost", "removehost", "cancelclone"])
 )
 async def delete_cloned_bot(client, message):
     try:
         if len(message.command) < 2:
-            await message.reply_text("**Provide Bot Token after /delclone Command from @Botfather.**\n\n**Example:** `/delclone bot token paste here`")
+            await message.reply_text("**Provide Bot Token after /delhost Command from @Botfather.**\n\n**Example:** `/delclone bot token paste here`")
             return
 
         bot_token = " ".join(message.command[1:])
@@ -121,7 +121,7 @@ async def delete_cloned_bot(client, message):
                 f"**🤖 your cloned bot has been removed from my database ✅**\n**🔄 Kindly revoke your bot token from @botfather otherwise your bot will stop when @{app.username} will restart ☠️**"
             )
         else:
-            await message.reply_text("**⚠️ The provided bot token is not in the cloned list.**")
+            await message.reply_text("**⚠️ The provided bot token is not in the hosted list.**")
     except Exception as e:
         await message.reply_text(f"**An error occurred while deleting the cloned bot:** {e}")
         logging.exception(e)
