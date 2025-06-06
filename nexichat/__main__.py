@@ -37,13 +37,13 @@ async def anony_boot():
             commands=[
                 BotCommand("start", "Start the bot"),
                 BotCommand("help", "Get the help menu"),
-                BotCommand("clone", "Make your own chatbot"),
-                BotCommand("cloned", "Get List of all cloned bot"),
+                BotCommand("host", "Make your own chatbot"),
+                BotCommand("hosted", "Get List of all hosted bot"),
                 BotCommand("ping", "Check if the bot is alive or dead"),
                 BotCommand("id", "Get users user_id"),
                 BotCommand("stats", "Check bot stats"),
                 BotCommand("gcast", "Broadcast any message to groups/users"),
-                BotCommand("repo", "Get chatbot source code"),
+                BotCommand("donate", "Donate The Developer"),
             ]
         )
         LOGGER.info("Bot commands set successfully.")
